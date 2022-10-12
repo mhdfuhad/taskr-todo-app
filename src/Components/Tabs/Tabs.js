@@ -32,13 +32,7 @@ export default function Tabs(props) {
         Completed
       </div>
       <div className="flex gap-10 md:absolute md:left-1/2 md:bottom-14 md:-translate-x-1/2">
-        <button onClick={props.add} className="flex flex-col items-center">
-          <span className="material-symbols-outlined text-center border-4 p-1 rounded-full border-stone-800 text-stone-800 md:transition-all md:ease-out md:duration-300 md:text-5xl md:hover:bg-stone-800/20 ">
-            add
-          </span>
-          <label className="text-lg">Add New</label>
-        </button>
-        {props.tab.activeTab === 2 && (
+        {props.tab.activeTab === 2 ? (
           <button
             onClick={props.deleteAll}
             className="flex flex-col items-center"
@@ -47,6 +41,13 @@ export default function Tabs(props) {
               delete
             </span>
             <label className="text-lg">Clear List</label>
+          </button>
+        ) : (
+          <button onClick={props.add} className="flex flex-col items-center">
+            <span className="material-symbols-outlined text-center border-4 p-1 rounded-full border-stone-800 text-stone-800 md:transition-all md:ease-out md:duration-300 md:text-5xl md:hover:bg-stone-800/20 ">
+              add
+            </span>
+            <label className="text-lg">Add New</label>
           </button>
         )}
       </div>
