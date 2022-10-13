@@ -4,6 +4,7 @@ import Task from "../Task/Task";
 export default function TaskList(props) {
   const [currList, setCurrList] = useState([]);
   const [title, setTitle] = useState("");
+  const [inEditMode, setInEditMode] = useState(false);
 
   const setTasks = () => {
     if (props.tasks) {
@@ -76,6 +77,7 @@ export default function TaskList(props) {
                 update={updateTaskStatus}
                 contentUpdate={updateTaskContent}
                 delete={deleteSingleTask}
+                mode={setInEditMode}
               >
                 {task.title}
               </Task>
@@ -97,7 +99,7 @@ export default function TaskList(props) {
           />
         </div>
       )}
-      {!props.add.add && (
+      {!props.add.add && !inEditMode && (
         <div
           ref={props.bottom}
           className="flex-grow"

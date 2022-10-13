@@ -6,6 +6,7 @@ export default function Task(props) {
 
   const update = () => {
     setEdit(false);
+    props.mode(false);
     props.contentUpdate(props.id, title);
   };
 
@@ -38,7 +39,10 @@ export default function Task(props) {
                 className={` ml-2 text-3xl font-medium text-gray-600 ${
                   props.checked || false ? "line-through" : ""
                 }`}
-                onClick={() => setEdit(true)}
+                onClick={() => {
+                  setEdit(true);
+                  props.mode(true);
+                }}
               >
                 {title}
               </span>
