@@ -37,8 +37,7 @@
 
 ## Overview
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
-
+![screenshot](https://user-images.githubusercontent.com/77447622/195671382-f6be6909-e358-4462-87ff-f733f47997b8.png)
 
 ### Built With
 
