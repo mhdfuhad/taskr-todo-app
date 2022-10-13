@@ -64,7 +64,7 @@ export default function TaskList(props) {
   }, [props.tasks, props.tab]);
 
   return (
-    <div className={`h-screen w-full p-8 overflow-y-scroll flex flex-col`}>
+    <div className={`h-screen w-full p-8 overflow-y-auto flex flex-col`}>
       {currList.length > 0 ? (
         <>
           {currList &&

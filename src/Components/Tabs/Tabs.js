@@ -1,9 +1,9 @@
 export default function Tabs(props) {
   // on click add random tasks function
   return (
-    <div className="relative bg-stone-400 flex justify-around text-xl md:justify-center md:flex-col md:h-screen md:w-1/5 md:text-4xl 2xl:text-7xl">
+    <div className="relative bg-stone-400 flex justify-around text-2xl md:justify-center md:flex-col md:h-screen md:w-1/5 md:text-4xl 2xl:text-7xl">
       <div
-        className={`cursor-pointer hover:bg-stone-600 w-full text-center py-6 transition ease-in-out duration-500 ${
+        className={`cursor-pointer hover:bg-stone-600 w-full text-center py-6 transition-all ease-in-out duration-500 ${
           props.tab.activeTab === 0
             ? "border-b-8 md:border-r-8 md:border-b-0 border-stone-800 bg-stone-600 "
             : ""
@@ -13,7 +13,7 @@ export default function Tabs(props) {
         All
       </div>
       <div
-        className={`cursor-pointer hover:bg-stone-600 w-full text-center py-6 transition ease-in-out duration-500 ${
+        className={`cursor-pointer hover:bg-stone-600 w-full text-center py-6 transition-all ease-in-out duration-500 ${
           props.tab.activeTab === 1
             ? "border-b-8 md:border-r-8 md:border-b-0 border-stone-800 bg-stone-600 "
             : ""
@@ -23,7 +23,7 @@ export default function Tabs(props) {
         Active
       </div>
       <div
-        className={`cursor-pointer hover:bg-stone-600 w-full text-center py-6 transition ease-in-out duration-500 ${
+        className={`cursor-pointer hover:bg-stone-600 w-full text-center py-6 transition-all ease-in-out duration-500 ${
           props.tab.activeTab === 2
             ? "border-b-8 md:border-r-8 md:border-b-0 border-stone-800 bg-stone-600 "
             : ""
@@ -32,7 +32,7 @@ export default function Tabs(props) {
       >
         Completed
       </div>
-      <div className="flex gap-10 fixed bottom-10 left-10  md:absolute md:left-1/2 md:bottom-14 md:-translate-x-1/2">
+      <div className="flex gap-10 fixed bottom-10 right-10 md:right-auto md:absolute md:left-1/2 md:bottom-14 md:-translate-x-1/2">
         {props.tab.activeTab === 2 ? (
           <button
             onClick={props.deleteAll}
