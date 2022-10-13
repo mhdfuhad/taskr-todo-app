@@ -3,6 +3,7 @@ import Task from "../Task/Task";
 
 export default function TaskList(props) {
   const [currList, setCurrList] = useState([]);
+  const [title, setTitle] = useState("");
 
   const setTasks = () => {
     if (props.tasks) {
@@ -39,30 +40,70 @@ export default function TaskList(props) {
     props.get();
   };
 
+  const addNewTask = () => {
+    if (title !== "") {
+      const tasks = JSON.parse(localStorage.getItem("task")) || [];
+      const newTask = {
+        id: new Date().getTime(),
+        title: title,
+        done: false,
+      };
+      tasks.push(newTask);
+      localStorage.setItem("task", JSON.stringify(tasks));
+      setTitle("");
+      props.get();
+    }
+
+    props.add.setAdd(false);
+  };
+
   useEffect(() => {
     setTasks();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.tasks, props.tab]);
 
-  return currList.length > 0 ? (
-    <div className={`h-screen w-full p-8 overflow-y-scroll `}>
-      {currList &&
-        currList.map((task, idx) => (
-          <Task
-            key={idx}
-            id={task.id}
-            tab={props.tab}
-            checked={task.done}
-            update={updateTaskStatus}
-            contentUpdate={updateTaskContent}
-            delete={deleteSingleTask}
-          >
-            {task.title}
-          </Task>
-        ))}
-      <div ref={props.bottom}></div>
+  return (
+    <div className={`h-screen w-full p-8 overflow-y-scroll flex flex-col`}>
+      {currList.length > 0 ? (
+        <>
+          {currList &&
+            currList.map((task, idx) => (
+              <Task
+                key={idx}
+                id={task.id}
+                tab={props.tab}
+                checked={task.done}
+                update={updateTaskStatus}
+                contentUpdate={updateTaskContent}
+                delete={deleteSingleTask}
+              >
+                {task.title}
+              </Task>
+            ))}
+        </>
+      ) : null}
+
+      {(props.tab === 0 || props.tab === 1) && props.add.add && (
+        <div className="flex items-center w-full">
+          <div className="cursor-pointer border-2 rounded-full w-7 h-7 border-gray-400 flex items-center justify-center"></div>
+          <input
+            type="text"
+            className="ml-2 text-3xl text-gray-400 outline-none text w-full "
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            onBlur={addNewTask}
+            autoFocus
+            placeholder="Add new task"
+          />
+        </div>
+      )}
+      {!props.add.add && (
+        <div
+          ref={props.bottom}
+          className="flex-grow"
+          onClick={() => props.add.setAdd(true)}
+        ></div>
+      )}
     </div>
-  ) : (
-    <></>
   );
 }

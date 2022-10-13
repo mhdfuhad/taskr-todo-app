@@ -1,6 +1,7 @@
 export default function Tabs(props) {
+  // on click add random tasks function
   return (
-    <div className="relative bg-stone-400 flex justify-around text-xl md:justify-center md:flex-col md:h-screen md:w-1/5 md:text-4xl 2xl:text-7xl md:max-w-sm">
+    <div className="relative bg-stone-400 flex justify-around text-xl md:justify-center md:flex-col md:h-screen md:w-1/5 md:text-4xl 2xl:text-7xl">
       <div
         className={`cursor-pointer hover:bg-stone-600 w-full text-center py-6 transition ease-in-out duration-500 ${
           props.tab.activeTab === 0
@@ -31,7 +32,7 @@ export default function Tabs(props) {
       >
         Completed
       </div>
-      <div className="flex gap-10 md:absolute md:left-1/2 md:bottom-14 md:-translate-x-1/2">
+      <div className="flex gap-10 fixed bottom-10 left-10  md:absolute md:left-1/2 md:bottom-14 md:-translate-x-1/2">
         {props.tab.activeTab === 2 ? (
           <button
             onClick={props.deleteAll}

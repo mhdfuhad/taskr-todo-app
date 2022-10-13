@@ -5,10 +5,11 @@ import TaskList from "./Components/TaskList/TaskList";
 function App() {
   const [activeTab, setActiveTab] = useState(0);
   const [tasks, setTasks] = useState(null);
+  const [add, setAdd] = useState(false);
   const scrollRef = useRef();
 
   const getTasks = () => {
-    setTasks(JSON.parse(localStorage.getItem("task")));
+    setTasks(JSON.parse(localStorage.getItem("task")) || []);
   };
 
   const deleteTasks = () => {
@@ -24,6 +25,8 @@ function App() {
       inline: "nearest",
       behavior: "smooth",
     });
+
+    setAdd(true);
   };
 
   useEffect(() => {
@@ -42,6 +45,7 @@ function App() {
         tab={activeTab}
         get={getTasks}
         bottom={scrollRef}
+        add={{ add, setAdd }}
       />
     </div>
   );
