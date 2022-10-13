@@ -47,6 +47,10 @@ function App() {
         bottom={scrollRef}
         add={{ add, setAdd }}
       />
+
+      <span className="fixed bottom-0 right-2 opacity-40">
+        created by <u>mhdfuhad</u> - devChallenges.io
+      </span>
     </div>
   );
 }
