@@ -2,10 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap");
 
 * {
-  font-family: "Oswald", sans-serif;
+  font-family: "Fuzzy Bubbles", cursive;
+}
+
+h1 {
+  font-weight: bolder;
 }
 
 /* width */

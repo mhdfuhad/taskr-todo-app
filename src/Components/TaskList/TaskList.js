@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { nanoid } from "nanoid";
 import Task from "../Task/Task";
 
 export default function TaskList(props) {
@@ -18,25 +19,25 @@ export default function TaskList(props) {
     }
   };
 
-  const updateTaskStatus = (idx) => {
+  const updateTaskStatus = (id) => {
     const tasks = JSON.parse(localStorage.getItem("task"));
-    const index = tasks.findIndex((task) => task.id === idx);
+    const index = tasks.findIndex((task) => task.id === id);
     tasks[index].done = !tasks[index].done;
     localStorage.setItem("task", JSON.stringify(tasks));
     props.get();
   };
 
-  const updateTaskContent = (idx, title) => {
+  const updateTaskContent = (id, title) => {
     const tasks = JSON.parse(localStorage.getItem("task"));
-    const index = tasks.findIndex((task) => task.id === idx);
+    const index = tasks.findIndex((task) => task.id === id);
     tasks[index].title = title;
     localStorage.setItem("task", JSON.stringify(tasks));
     props.get();
   };
 
-  const deleteSingleTask = (idx) => {
+  const deleteSingleTask = (id) => {
     const tasks = JSON.parse(localStorage.getItem("task"));
-    const newTasks = tasks.filter((task) => task.id !== idx);
+    const newTasks = tasks.filter((task) => task.id !== id);
     localStorage.setItem("task", JSON.stringify(newTasks));
     props.get();
   };
@@ -45,7 +46,7 @@ export default function TaskList(props) {
     if (title !== "") {
       const tasks = JSON.parse(localStorage.getItem("task")) || [];
       const newTask = {
-        id: new Date().getTime(),
+        id: nanoid(),
         title: title,
         done: false,
       };
@@ -64,13 +65,15 @@ export default function TaskList(props) {
   }, [props.tasks, props.tab]);
 
   return (
-    <div className={`h-screen w-full p-8 overflow-y-auto flex flex-col`}>
+    <div
+      className={`h-screen w-full p-8 overflow-y-auto flex flex-col relative`}
+    >
       {currList.length > 0 ? (
         <>
           {currList &&
-            currList.map((task, idx) => (
+            currList.map((task) => (
               <Task
-                key={idx}
+                key={task.id}
                 id={task.id}
                 tab={props.tab}
                 checked={task.done}
@@ -87,7 +90,9 @@ export default function TaskList(props) {
 
       {(props.tab === 0 || props.tab === 1) && props.add.add && (
         <div className="flex items-center w-full">
-          <div className="cursor-pointer border-2 rounded-full w-7 h-7 border-gray-400 flex items-center justify-center"></div>
+          <span className="material-symbols-outlined text-gray-400 text-3xl">
+            add
+          </span>
           <input
             type="text"
             className="ml-2 text-3xl text-gray-400 outline-none text w-full "
@@ -95,14 +100,34 @@ export default function TaskList(props) {
             onChange={(e) => setTitle(e.target.value)}
             onBlur={addNewTask}
             autoFocus
-            placeholder="Add new task"
+            placeholder="Add task"
           />
         </div>
       )}
+
+      {currList.length === 0 && (
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full grayscale opacity-40 flex flex-col gap-5 items-center z-0">
+          <img
+            src={
+              props.tab !== 2
+                ? "https://i.ibb.co/ZL2LxJf/hand-illus.png"
+                : "https://i.ibb.co/SwMXYzX/boy-1300226.png"
+            }
+            alt="illustration"
+            className="w-48 md:w-64"
+          />
+          <span className="p-2 text-center text-lg md:text-3xl">
+            {props.tab !== 2
+              ? "Click anywhere to add a task"
+              : "Uh Oh! You haven't completed any tasks yet!"}
+          </span>
+        </div>
+      )}
+
       {!props.add.add && !inEditMode && (
         <div
           ref={props.bottom}
-          className="flex-grow"
+          className="flex-grow min-h-[30px] z-10"
           onClick={() => props.add.setAdd(true)}
         ></div>
       )}
