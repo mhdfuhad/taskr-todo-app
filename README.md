@@ -12,7 +12,7 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://todo-taskr.netlify.app/">
+    <a href="https://devchallenges.io/solutions/3faR6GLaSr0TxArr9f8c">
       Solution
     </a>
     <span> | </span>
