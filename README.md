@@ -1,7 +1,5 @@
 <h1 align="center">Taskr Todo App</h1>
 
-## <!-- TABLE OF CONTENTS -->
-
 ## Table of Contents
 
 - [Overview](#overview)
@@ -10,8 +8,6 @@
   - [Features](#features)
 - [How To Run Locally](#how-to-run-locally)
 - [Contact](#contact)
-
-## <!-- OVERVIEW -->
 
 ## Overview
 
