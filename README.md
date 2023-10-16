@@ -9,8 +9,6 @@
 - [How To Run Locally](#how-to-run-locally)
 - [Contact](#contact)
 
----
-
 ## Overview
 
 ### Screenshot
@@ -40,8 +38,6 @@
    `An optional feature allows data persistence using local storage.
 User progress is saved, and even after refreshing the page, the To-Do list reflects the latest state`
 
----
-
 ## How To Run Locally
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
@@ -56,8 +52,6 @@ $ npm install
 # Run the app
 $ npm start
 ```
-
----
 
 ## Contact
 
