@@ -22,21 +22,20 @@
 
 ### Features
 
-1. Add New Task
+1. Add New Task\
    `Users can add a new task to the To-Do list.`
 
-2. Complete Task
+2. Complete Task\
    `Users have the ability to mark a task as completed.`
 
-3. Toggle Views
+3. Toggle Views\
    `Users can switch between different views, including All tasks, Active tasks, and Completed tasks.`
 
-4. Remove Task
+4. Remove Task\
    `Users can remove individual tasks or clear all tasks listed under the Completed tab.`
 
-5. Local Storage
-   `An optional feature allows data persistence using local storage.
-User progress is saved, and even after refreshing the page, the To-Do list reflects the latest state`
+5. Local Storage\
+   `Allows data persistence using local storage. User progress is saved, and even after refreshing the page, the To-Do list reflects the latest state`
 
 ## How To Run Locally
 
